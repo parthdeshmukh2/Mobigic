@@ -19,6 +19,7 @@ import {
   } from '@chakra-ui/react';
   import { MoonIcon, SunIcon } from '@chakra-ui/icons';
 import { useState } from 'react';
+import {useNavigate} from "react-router-dom";
 
 
 const NavLink = ({ children }: { children: ReactNode }) => (
@@ -38,7 +39,8 @@ const NavLink = ({ children }: { children: ReactNode }) => (
 const Navbar = () => {
     const { colorMode, toggleColorMode } = useColorMode();
     const { isOpen, onOpen, onClose } = useDisclosure();
-    const [isLogin, setIsLogin] = useState(false);
+    const [isLogin, setIsLogin] = useState(true);
+    const navigate = useNavigate();
 
     return (
       <>
@@ -80,7 +82,7 @@ const Navbar = () => {
                     </Center>
                     <br />
                     <MenuDivider />
-                    <MenuItem>Profile</MenuItem>
+                    <MenuItem onClick={()=> navigate('/profile')}>Profile</MenuItem>
                   
                   </MenuList>
                 </Menu>
