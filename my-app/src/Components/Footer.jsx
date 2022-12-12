@@ -84,7 +84,7 @@ const Footer = () => {
      
       m="auto"
       rounded="xl"
-      mt="48"
+      mt="20"
       
     >
       <Container as={Stack} maxW={"6xl"} py={10}>
@@ -97,7 +97,7 @@ const Footer = () => {
               <Logo color={useColorModeValue("gray.700", "white")} />
             </Box>
             <Text fontSize={"sm"}>
-              © 2022 Chakra Templates. All rights reserved
+              © Mobigic All rights reserved
             </Text>
             <Stack direction={"row"} spacing={6}>
               <SocialButton label={"Twitter"} href={"#"}>
