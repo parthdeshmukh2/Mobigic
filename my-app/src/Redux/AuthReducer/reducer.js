@@ -1,17 +1,33 @@
 import * as types from "./actionTypes";
 
 const initialState = {
-    isAuth : false,
-    token:"",
-    isLoading:false,
-    isError:false
-}
+  user: "",
+  token: "",
+  isAuth: false,
+  isLoding: false,
+  isError: false,
+};
 
 export const reducer = (state = initialState, action) => {
+  const { type, payload } = action;
+  // console.log(payload);
+  switch (type) {
+    case types.GET_LOGIN_REQUEST:
+      return { ...state, isLoding: true, isError: false };
 
-    const {type, payload} = action;
+    case types.GET_LOGIN_SUCCESS:
+      return {
+        ...state,
+        isLoding: false,
+        isError: false,
+        isAuth: true,
+        token: payload.token,
+        user: payload.user,
+      };
 
-    switch(type){
-        default: return state;
-    }
-}
+    case types.GET_LOGIN_FAILURE:
+      return { ...state, isLoding: false, isError: true, isAuth: false };
+    default:
+      return state;
+  }
+};
