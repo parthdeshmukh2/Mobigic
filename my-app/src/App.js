@@ -1,12 +1,11 @@
-
-import './App.css';
-import {Box} from "@chakra-ui/react";
-import MainRoutes from './Pages/MainRoutes';
+import "./App.css";
+import { Box } from "@chakra-ui/react";
+import MainRoutes from "./Pages/MainRoutes";
 
 function App() {
   return (
-    <Box >
-     <MainRoutes/>
+    <Box>
+      <MainRoutes />
     </Box>
   );
 }

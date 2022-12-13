@@ -3,6 +3,7 @@ import { Box, Text } from "@chakra-ui/react";
 import Navbar from "../Components/Navbar";
 import Footer from "../Components/Footer";
 import ProductCard from "../Components/ProductCard";
+import { useSelector } from "react-redux";
 
 const data = [
   {
@@ -57,6 +58,10 @@ const data = [
 ];
 
 const Profile = () => {
+  const userName = useSelector((store) => store.AuthReducer.user);
+  const isAuth = useSelector((store) => store.AuthReducer.isAuth);
+  const user = useSelector((store) => store.AuthReducer.user);
+
   return (
     <Box>
       <Navbar />
@@ -68,7 +73,7 @@ const Profile = () => {
           fontStyle="italic"
           fontWeight="600"
         >
-          UserName: parthdeshmukh99
+          UserName: {user}
         </Text>
       </Box>
 
@@ -81,8 +86,8 @@ const Profile = () => {
           md: "repeat(2, 1fr)",
           lg: "repeat(3, 1fr)",
         }}
-        gap='8'
-        mt='8'
+        gap="8"
+        mt="8"
       >
         {data.map((elem) => (
           <ProductCard key={elem.id} {...elem} />

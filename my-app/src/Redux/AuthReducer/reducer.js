@@ -22,7 +22,7 @@ export const reducer = (state = initialState, action) => {
         isError: false,
         isAuth: true,
         token: payload.token,
-        user: payload.user,
+        user: payload.userLogin.userName,
       };
 
     case types.GET_LOGIN_FAILURE:

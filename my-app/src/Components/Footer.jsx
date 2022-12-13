@@ -81,11 +81,12 @@ const Footer = () => {
       bg={useColorModeValue("gray.300", "gray.900")}
       color={useColorModeValue("gray.700", "gray.200")}
       w="90%"
-     
       m="auto"
       rounded="xl"
       mt="20"
-      
+      // position='fixed'
+      // bottom='0'
+      left="auto"
     >
       <Container as={Stack} maxW={"6xl"} py={10}>
         <SimpleGrid
@@ -96,9 +97,7 @@ const Footer = () => {
             <Box>
               <Logo color={useColorModeValue("gray.700", "white")} />
             </Box>
-            <Text fontSize={"sm"}>
-              © Mobigic All rights reserved
-            </Text>
+            <Text fontSize={"sm"}>© Mobigic All rights reserved</Text>
             <Stack direction={"row"} spacing={6}>
               <SocialButton label={"Twitter"} href={"#"}>
                 <FaTwitter />
