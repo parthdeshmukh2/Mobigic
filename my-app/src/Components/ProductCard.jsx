@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   Box,
   Text,
@@ -14,20 +14,36 @@ import {
   useDisclosure,
   Input,
 } from "@chakra-ui/react";
+import {useDispatch, useSelector} from "react-redux";
+import { deleteData, getData } from "../Redux/AppReducer/action";
 
 const ProductCard = (elem) => {
   const [modal, setModal] = useState(false);
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [uniqueCode, setUniqueCode] = useState("");
+  const dispatch = useDispatch();
+  const token = useSelector((store)=> store.AuthReducer.token)
 
-  const handleDelete = () => {
+  const handleDownLoad = () => {
     if (uniqueCode == 123456) {
-      alert("Deleted Successfully");
+      alert("Downloded Successfully ");
       setModal(false);
     } else {
       alert("Please Enter Correct Code");
     }
   };
+
+  const handleDelete = () => {
+   dispatch(deleteData(elem._id, token));
+   console.log("Clicked");
+  }
+
+  // useEffect(()=>{
+  //   if(token){
+  //     getData(token);
+  //   }
+
+  // },[])
 
   return (
     <Box
@@ -40,16 +56,16 @@ const ProductCard = (elem) => {
     >
       <Image w="80%" h="250px" src={elem.image} />
       <Text mt="2" fontSize="xl" fontWeight="500">
-        {elem.title}
+       Title: {elem.title}
       </Text>
       <Text mt="2" fontSize="xl" fontWeight="500">
-        {elem.code}
+        Code: {elem.uniqueCode}
       </Text>
       <Box w="100%" display="flex" justifyContent="space-around">
-        <Button bg="green" color="white">
+        <Button bg="green" color="white" onClick={() => setModal(true)}>
           Download
         </Button>
-        <Button bg="red" color="white" onClick={() => setModal(true)}>
+        <Button bg="red" color="white" onClick={handleDelete} >
           Delete
         </Button>
       </Box>
@@ -75,7 +91,7 @@ const ProductCard = (elem) => {
               >
                 Cancle
               </Button>
-              <Button bg="red" color="white" onClick={handleDelete}>
+              <Button bg="red" color="white" onClick={handleDownLoad}>
                 Confirm Delete
               </Button>
             </ModalFooter>

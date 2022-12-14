@@ -1,16 +1,37 @@
 import React, { useState } from "react";
 import { Box, Text, Input, Button } from "@chakra-ui/react";
 import { BsFillImageFill } from "react-icons/bs";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { postData } from "../Redux/AppReducer/action";
+import axios from "axios";
 
 const UploadSection = () => {
   const isLogin = useSelector((store) => store.AuthReducer.isAuth);
+  const token = useSelector((store) => store.AuthReducer.token);
   const navigate = useNavigate();
-  const [file, setFile] = useState("");
+  const [image, setImage] = useState("");
+  const [title, setTitle] = useState("");
+  const dispatch = useDispatch()
 
   const handleSubmit = () => {
-    console.log(file);
+    console.log("clicked");
+    if(title && image){
+       dispatch(postData({title, image}, token))
+    // const body = {title, image};
+    // axios.post("http://localhost:8080/project/post", body, {
+    //   headers:{
+    //     token: "Bearer " + token,
+    //     "Content-Type": "multipart/form-data",
+    //   },
+    // })
+    // .then((res)=> alert("Posted Successfully"))
+    // .catch((err)=> console.log(err));
+    // }
+    
+    // else{
+    //   alert("Both The fields are Required")
+    }
   };
 
   return (
@@ -46,6 +67,7 @@ const UploadSection = () => {
             fontWeight="600"
             fontStyle="italic"
             textAlign="center"
+
           >
             Upload Files Here
           </Text>
@@ -60,6 +82,7 @@ const UploadSection = () => {
               w="100%"
               border="1px solid black"
               type="text"
+              onChange={(e)=> setTitle(e.target.value)}
             />
           </Box>
 
@@ -68,7 +91,7 @@ const UploadSection = () => {
               placeholder="Enter Title"
               w="100%"
               type="file"
-              onChange={(e) => setFile(e.target.files)}
+              onChange={(e) => setImage(e.target.files)}
             />
           </Box>
 

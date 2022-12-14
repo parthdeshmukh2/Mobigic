@@ -1,67 +1,31 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
 import { Box, Text } from "@chakra-ui/react";
 import Navbar from "../Components/Navbar";
 import Footer from "../Components/Footer";
 import ProductCard from "../Components/ProductCard";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { getData } from "../Redux/AppReducer/action";
 
-const data = [
-  {
-    id: "1",
-    image:
-      "https://images.unsplash.com/photo-1664575198263-269a022d6e14?ixlib=rb-4.0.3&ixid=MnwxMjA3fDF8MHxlZGl0b3JpYWwtZmVlZHwxfHx8ZW58MHx8fHw%3D&auto=format&fit=crop&w=500&q=60",
-    title: "idsgdifhg",
-    code: "123456",
-  },
-  {
-    id: "2",
-    image:
-      "https://images.unsplash.com/photo-1664575198263-269a022d6e14?ixlib=rb-4.0.3&ixid=MnwxMjA3fDF8MHxlZGl0b3JpYWwtZmVlZHwxfHx8ZW58MHx8fHw%3D&auto=format&fit=crop&w=500&q=60",
-    title: "idsgdifhg",
-    code: "123456",
-  },
-  {
-    id: "3",
-    image:
-      "https://images.unsplash.com/photo-1664575198263-269a022d6e14?ixlib=rb-4.0.3&ixid=MnwxMjA3fDF8MHxlZGl0b3JpYWwtZmVlZHwxfHx8ZW58MHx8fHw%3D&auto=format&fit=crop&w=500&q=60",
-    title: "idsgdifhg",
-    code: "123456",
-  },
-  {
-    id: "4",
-    image:
-      "https://images.unsplash.com/photo-1664575198263-269a022d6e14?ixlib=rb-4.0.3&ixid=MnwxMjA3fDF8MHxlZGl0b3JpYWwtZmVlZHwxfHx8ZW58MHx8fHw%3D&auto=format&fit=crop&w=500&q=60",
-    title: "idsgdifhg",
-    code: "123456",
-  },
-  {
-    id: "5",
-    image:
-      "https://images.unsplash.com/photo-1664575198263-269a022d6e14?ixlib=rb-4.0.3&ixid=MnwxMjA3fDF8MHxlZGl0b3JpYWwtZmVlZHwxfHx8ZW58MHx8fHw%3D&auto=format&fit=crop&w=500&q=60",
-    title: "idsgdifhg",
-    code: "123456",
-  },
-  {
-    id: "6",
-    image:
-      "https://images.unsplash.com/photo-1664575198263-269a022d6e14?ixlib=rb-4.0.3&ixid=MnwxMjA3fDF8MHxlZGl0b3JpYWwtZmVlZHwxfHx8ZW58MHx8fHw%3D&auto=format&fit=crop&w=500&q=60",
-    title: "idsgdifhg",
-    code: "123456",
-  },
-  {
-    id: "7",
-    image:
-      "https://images.unsplash.com/photo-1664575198263-269a022d6e14?ixlib=rb-4.0.3&ixid=MnwxMjA3fDF8MHxlZGl0b3JpYWwtZmVlZHwxfHx8ZW58MHx8fHw%3D&auto=format&fit=crop&w=500&q=60",
-    title: "idsgdifhg",
-    code: "123456",
-  },
-];
 
 const Profile = () => {
-  const userName = useSelector((store) => store.AuthReducer.user);
-  const isAuth = useSelector((store) => store.AuthReducer.isAuth);
+  const token = useSelector((store) => store.AuthReducer.token);
   const user = useSelector((store) => store.AuthReducer.user);
+  const data = useSelector((store)=> store.AppReducer.data);
 
+  const dispatch = useDispatch();
+
+  useEffect(()=>{
+    if(token){
+      dispatch(getData(token));
+
+    }
+     
+  },[data]);
+// useEffect(()=>{
+//   setProfileData(data)
+// },[])
+
+  console.log(data);
   return (
     <Box>
       <Navbar />
@@ -90,7 +54,7 @@ const Profile = () => {
         mt="8"
       >
         {data.map((elem) => (
-          <ProductCard key={elem.id} {...elem} />
+          <ProductCard key={elem._id} {...elem} />
         ))}
       </Box>
 
