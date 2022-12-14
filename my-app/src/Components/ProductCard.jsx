@@ -16,6 +16,7 @@ import {
 } from "@chakra-ui/react";
 import {useDispatch, useSelector} from "react-redux";
 import { deleteData, getData } from "../Redux/AppReducer/action";
+import {saveAs} from "file-saver";
 
 const ProductCard = (elem) => {
   const [modal, setModal] = useState(false);
@@ -25,7 +26,9 @@ const ProductCard = (elem) => {
   const token = useSelector((store)=> store.AuthReducer.token)
 
   const handleDownLoad = () => {
-    if (uniqueCode == 123456) {
+    if (uniqueCode == elem.uniqueCode) {
+      let url = elem.image;
+      saveAs(url, elem.title)
       alert("Downloded Successfully ");
       setModal(false);
     } else {
@@ -38,12 +41,6 @@ const ProductCard = (elem) => {
    console.log("Clicked");
   }
 
-  // useEffect(()=>{
-  //   if(token){
-  //     getData(token);
-  //   }
-
-  // },[])
 
   return (
     <Box

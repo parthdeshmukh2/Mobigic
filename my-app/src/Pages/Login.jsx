@@ -67,7 +67,7 @@ const Login = () => {
             color="blue"
             textDecoration="underline"
             cursor="pointer"
-            onClick={()=> navigate('/register')}
+            onClick={() => navigate("/register")}
           >
             Register Here
           </Text>

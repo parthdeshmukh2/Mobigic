@@ -9,10 +9,8 @@ const HomePage = () => {
     <Box>
       <Navbar />
       <UploadSection />
-      
-      <Footer />
 
-    
+      <Footer />
     </Box>
   );
 };

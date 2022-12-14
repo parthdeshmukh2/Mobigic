@@ -12,17 +12,14 @@ const UploadSection = () => {
   const navigate = useNavigate();
   const [image, setImage] = useState("");
   const [title, setTitle] = useState("");
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
 
   const handleSubmit = () => {
-   
-    if(title && image){
+    if (title && image) {
       console.log("clicked");
-      dispatch(postData({title, image}, token, setImage, setTitle));
-    }
-    
-    else{
-      alert("Both The fields are Required")
+      dispatch(postData({ title, image }, token, setImage, setTitle));
+    } else {
+      alert("Both The fields are Required");
     }
   };
 
@@ -59,7 +56,6 @@ const UploadSection = () => {
             fontWeight="600"
             fontStyle="italic"
             textAlign="center"
-
           >
             Upload Files Here
           </Text>
@@ -74,7 +70,7 @@ const UploadSection = () => {
               w="100%"
               border="1px solid black"
               type="text"
-              onChange={(e)=> setTitle(e.target.value)}
+              onChange={(e) => setTitle(e.target.value)}
             />
           </Box>
 

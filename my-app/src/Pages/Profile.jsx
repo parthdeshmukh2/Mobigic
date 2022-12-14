@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from "react";
+import React, { useEffect, useState } from "react";
 import { Box, Text } from "@chakra-ui/react";
 import Navbar from "../Components/Navbar";
 import Footer from "../Components/Footer";
@@ -6,24 +6,18 @@ import ProductCard from "../Components/ProductCard";
 import { useSelector, useDispatch } from "react-redux";
 import { getData } from "../Redux/AppReducer/action";
 
-
 const Profile = () => {
   const token = useSelector((store) => store.AuthReducer.token);
   const user = useSelector((store) => store.AuthReducer.user);
-  const data = useSelector((store)=> store.AppReducer.data);
+  const data = useSelector((store) => store.AppReducer.data);
 
   const dispatch = useDispatch();
 
-  useEffect(()=>{
-    if(token){
+  useEffect(() => {
+    if (token) {
       dispatch(getData(token));
-
     }
-     
-  },[data]);
-// useEffect(()=>{
-//   setProfileData(data)
-// },[])
+  }, [data]);
 
   console.log(data);
   return (

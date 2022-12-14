@@ -17,32 +17,30 @@ export const getData = (token) => (dispatch) => {
     .catch((err) => dispatch({ type: types.GET_DATA_FAILURE }));
 };
 
-
-
 export const postData = (body, token, setImage, setTitle) => (dispatch) => {
-  dispatch({type:types.POST_DATA_REQUEST});
- console.log(body);
+  dispatch({ type: types.POST_DATA_REQUEST });
+  console.log(body);
   let config = {
-    method:'post',
-    url:'http://localhost:8080/project/post',
-    headers:{
+    method: "post",
+    url: "http://localhost:8080/project/post",
+    headers: {
       token: `bearer ${token}`,
-      'Content-Type':'multipart/form-data',
+      "Content-Type": "multipart/form-data",
     },
-    data:(body)
+    data: body,
   };
 
   return axios(config)
-  .then((res)=> {
-    dispatch({type:types.POST_DATA_SUCCESS})
-    alert("Data Posted SuccessFully");
-    setImage("");
-    setTitle("");
-  })
+    .then((res) => {
+      dispatch({ type: types.POST_DATA_SUCCESS });
+      alert("Data Posted SuccessFully");
+      alert("Click on Profile To View Images");
+      setImage("");
+      setTitle("");
+    })
 
-  .catch((err)=> dispatch({type:types.POST_DATA_FAILURE}))
-
-}
+    .catch((err) => dispatch({ type: types.POST_DATA_FAILURE }));
+};
 
 export const deleteData = (id, token) => (dispatch) => {
   dispatch({ type: types.DELETE_DATA_REQUEST });

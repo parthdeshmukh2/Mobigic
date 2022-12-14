@@ -16,7 +16,7 @@ import {
   useColorMode,
   Center,
   Image,
-  Text
+  Text,
 } from "@chakra-ui/react";
 import { MoonIcon, SunIcon } from "@chakra-ui/icons";
 import { useState } from "react";
@@ -54,14 +54,24 @@ const Navbar = () => {
         rounded="xl"
       >
         <Flex h={16} alignItems={"center"} justifyContent={"space-between"}>
-          <Box display='flex' alignItems='center'>
+          <Box display="flex" alignItems="center">
             <Image
               onClick={() => navigate("/")}
               cursor="pointer"
               w={{ base: "15%", md: "10%", lg: "4%" }}
               src="https://mobigic.com/img/mobigic_logo.svg"
             />
-            <Text fontSize='xl' ml='2' fontWeight='700' fontStyle='italic' fontFamily='cursive' cursor='pointer'  onClick={() => navigate("/")}>Mobigic</Text>
+            <Text
+              fontSize="xl"
+              ml="2"
+              fontWeight="700"
+              fontStyle="italic"
+              fontFamily="cursive"
+              cursor="pointer"
+              onClick={() => navigate("/")}
+            >
+              Mobigic
+            </Text>
           </Box>
 
           <Flex alignItems={"center"}>
