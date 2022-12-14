@@ -92,7 +92,7 @@ const ProductCard = (elem) => {
                 Cancle
               </Button>
               <Button bg="red" color="white" onClick={handleDownLoad}>
-                Confirm Delete
+                Confirm Download
               </Button>
             </ModalFooter>
           </ModalContent>
