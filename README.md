@@ -2,7 +2,7 @@
 
 Tech Stack:- HTML | CSS | Javascript | React | Redux | Node.js | Express | MongoDB | ChakraUI
 
-# How Top use
+# How To use
 
 1: When we open a Project it will landed to the home page. Home Page has basic navbar and footer. Along with that if the user is not Logged In then it will show please login. After Login The Uploading section appers.
 
