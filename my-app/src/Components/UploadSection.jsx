@@ -15,22 +15,14 @@ const UploadSection = () => {
   const dispatch = useDispatch()
 
   const handleSubmit = () => {
-    console.log("clicked");
+   
     if(title && image){
-       dispatch(postData({title, image}, token))
-    // const body = {title, image};
-    // axios.post("http://localhost:8080/project/post", body, {
-    //   headers:{
-    //     token: "Bearer " + token,
-    //     "Content-Type": "multipart/form-data",
-    //   },
-    // })
-    // .then((res)=> alert("Posted Successfully"))
-    // .catch((err)=> console.log(err));
-    // }
+      console.log("clicked");
+      dispatch(postData({title, image}, token, setImage, setTitle));
+    }
     
-    // else{
-    //   alert("Both The fields are Required")
+    else{
+      alert("Both The fields are Required")
     }
   };
 
@@ -91,7 +83,7 @@ const UploadSection = () => {
               placeholder="Enter Title"
               w="100%"
               type="file"
-              onChange={(e) => setImage(e.target.files)}
+              onChange={(e) => setImage(e.target.files[0])}
             />
           </Box>
 

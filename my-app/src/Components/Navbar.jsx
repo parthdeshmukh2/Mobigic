@@ -61,7 +61,7 @@ const Navbar = () => {
               w={{ base: "15%", md: "10%", lg: "4%" }}
               src="https://mobigic.com/img/mobigic_logo.svg"
             />
-            <Text fontSize='xl' ml='2' fontWeight='700' fontStyle='italic' fontFamily='cursive'>Mobigic</Text>
+            <Text fontSize='xl' ml='2' fontWeight='700' fontStyle='italic' fontFamily='cursive' cursor='pointer'  onClick={() => navigate("/")}>Mobigic</Text>
           </Box>
 
           <Flex alignItems={"center"}>
