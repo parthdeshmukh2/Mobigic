@@ -5,6 +5,7 @@ const cloudinary = require("cloudinary").v2;
 
 const ProjectController = express.Router();
 
+//Cloudinary Information Required for uploading a file and cloudinary helps to save our uploded file on cloud and provides a URL for Image.
 cloudinary.config({
   cloud_name: "du1vkfugh",
   api_key: "957455487357312",
@@ -12,14 +13,19 @@ cloudinary.config({
   secure: true,
 });
 
+// Get All Data for a particular User.
 ProjectController.get("/", async (req, res) => {
   const { userId } = req.body;
   const result = await ProjectModel.find({ userId });
   res.send(result);
 });
 
+//Post Request to post a data for a specific User.
+
 ProjectController.post("/post", async (req, res) => {
   const { title, userId } = req.body;
+
+  // For unique code generation I used Date.now function and I extract last 6 digit from it.
   let date = Date.now();
   date = date.toString();
   let uniqueCode = "";
@@ -46,21 +52,18 @@ ProjectController.post("/post", async (req, res) => {
   });
 });
 
+//Delete function for deleting a file from a particular user if it is present.
 
-ProjectController.delete('/delete/:id', async(req, res)=>{
-    const {id} = req.params;
-    const {userId} = req.body;
-    const ProjectItem = await ProjectModel.findOne({_id:id});
-    if(ProjectItem.userId === userId){
-      const result = await ProjectModel.findOneAndDelete({_id:id});
-      res.send("Deleted Successfully");
-    }
-    else{
-     res.send("Cart Item Not Found");
-    }
-})
-
-
-
+ProjectController.delete("/delete/:id", async (req, res) => {
+  const { id } = req.params;
+  const { userId } = req.body;
+  const ProjectItem = await ProjectModel.findOne({ _id: id });
+  if (ProjectItem.userId === userId) {
+    const result = await ProjectModel.findOneAndDelete({ _id: id });
+    res.send("Deleted Successfully");
+  } else {
+    res.send("Cart Item Not Found");
+  }
+});
 
 module.exports = ProjectController;

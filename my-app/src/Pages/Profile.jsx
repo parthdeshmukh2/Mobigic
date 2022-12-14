@@ -19,7 +19,7 @@ const Profile = () => {
     }
   }, [data]);
 
-  console.log(data);
+  // console.log(data);
   return (
     <Box>
       <Navbar />

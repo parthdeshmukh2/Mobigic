@@ -14,6 +14,8 @@ const UploadSection = () => {
   const [title, setTitle] = useState("");
   const dispatch = useDispatch();
 
+  // Dispatching the post function in Redux/action.js
+  // It will only trigger when the Title  and Image has a valid input.
   const handleSubmit = () => {
     if (title && image) {
       console.log("clicked");
@@ -83,9 +85,6 @@ const UploadSection = () => {
             />
           </Box>
 
-          {/* <Button bg="teal" color="white " mt="4" leftIcon={<BsFillImageFill />}>
-        Choose File
-      </Button> */}
           <Button bg="green" color="white" mt="8" onClick={handleSubmit}>
             Submit
           </Button>

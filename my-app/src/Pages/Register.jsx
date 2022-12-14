@@ -13,6 +13,8 @@ const Register = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
+  // Dispatching the Register function to Redux/AuthReducer/Register/
+  // This function will only run when userName and password has a valid input
   const handleSignUp = () => {
     if (userName && password) {
       dispatch(registerUser({ userName, password }, navigate));

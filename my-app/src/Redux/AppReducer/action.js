@@ -1,6 +1,7 @@
 import * as types from "./actionTypes";
 import axios from "axios";
 
+// Function to get all the data of a particular user.
 export const getData = (token) => (dispatch) => {
   dispatch({ type: types.GET_DATA_REQUEST });
 
@@ -17,6 +18,7 @@ export const getData = (token) => (dispatch) => {
     .catch((err) => dispatch({ type: types.GET_DATA_FAILURE }));
 };
 
+//Function for posting a data for a specific user.
 export const postData = (body, token, setImage, setTitle) => (dispatch) => {
   dispatch({ type: types.POST_DATA_REQUEST });
   console.log(body);
@@ -42,6 +44,7 @@ export const postData = (body, token, setImage, setTitle) => (dispatch) => {
     .catch((err) => dispatch({ type: types.POST_DATA_FAILURE }));
 };
 
+// Function for deleting an Item if it is present in the user's account.
 export const deleteData = (id, token) => (dispatch) => {
   dispatch({ type: types.DELETE_DATA_REQUEST });
 

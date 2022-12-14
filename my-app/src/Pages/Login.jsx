@@ -14,6 +14,9 @@ const Login = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
+  // Dispatching the Login Function to Redux/AuthReducer/action.js
+  // This function will only called when userName and password has a valid input
+  // You have to fill the correct details as per registration only then it will login
   const handleLogin = () => {
     if (userName && password) {
       dispatch(userLogin({ userName, password }, navigate));

@@ -6,6 +6,7 @@ import Register from "./Register";
 import Profile from "./Profile";
 
 const MainRoutes = () => {
+  // All the Routes are present here which is required for the project
   return (
     <Routes>
       <Route path="/" element={<HomePage />} />

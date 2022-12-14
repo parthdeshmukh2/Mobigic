@@ -1,5 +1,6 @@
 const jwt = require('jsonwebtoken');
 
+//Middleware for Authentication
 const Authentication = async(req, res, next)=>{
     const userToken = req.headers.token.split(" ")[1];
     if(!userToken){

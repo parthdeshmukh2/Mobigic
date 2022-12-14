@@ -14,21 +14,22 @@ import {
   useDisclosure,
   Input,
 } from "@chakra-ui/react";
-import {useDispatch, useSelector} from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { deleteData, getData } from "../Redux/AppReducer/action";
-import {saveAs} from "file-saver";
+import { saveAs } from "file-saver";
 
 const ProductCard = (elem) => {
   const [modal, setModal] = useState(false);
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [uniqueCode, setUniqueCode] = useState("");
   const dispatch = useDispatch();
-  const token = useSelector((store)=> store.AuthReducer.token)
+  const token = useSelector((store) => store.AuthReducer.token);
 
+  // Function For Downloading the Photo
   const handleDownLoad = () => {
     if (uniqueCode == elem.uniqueCode) {
       let url = elem.image;
-      saveAs(url, elem.title)
+      saveAs(url, elem.title);
       alert("Downloded Successfully ");
       setModal(false);
     } else {
@@ -36,11 +37,11 @@ const ProductCard = (elem) => {
     }
   };
 
+  // Dispatching the delete Function to Redux/action.js
   const handleDelete = () => {
-   dispatch(deleteData(elem._id, token));
-   console.log("Clicked");
-  }
-
+    dispatch(deleteData(elem._id, token));
+    //  console.log("Clicked");
+  };
 
   return (
     <Box
@@ -53,7 +54,7 @@ const ProductCard = (elem) => {
     >
       <Image w="80%" h="250px" src={elem.image} />
       <Text mt="2" fontSize="xl" fontWeight="500">
-       Title: {elem.title}
+        Title: {elem.title}
       </Text>
       <Text mt="2" fontSize="xl" fontWeight="500">
         Code: {elem.uniqueCode}
@@ -62,10 +63,12 @@ const ProductCard = (elem) => {
         <Button bg="green" color="white" onClick={() => setModal(true)}>
           Download
         </Button>
-        <Button bg="red" color="white" onClick={handleDelete} >
+        <Button bg="red" color="white" onClick={handleDelete}>
           Delete
         </Button>
       </Box>
+
+      {/* Modal Body */}
 
       {modal && (
         <Modal isOpen={true} onClose={onClose}>

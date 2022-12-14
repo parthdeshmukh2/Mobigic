@@ -1,5 +1,6 @@
 const mongoose = require("mongoose");
 
+//Schema Required for Project.
 const ProjectSchema = new mongoose.Schema({
   title: { type: String, required: true },
   image: { type: String, required: true },

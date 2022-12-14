@@ -9,7 +9,6 @@ const HomePage = () => {
     <Box>
       <Navbar />
       <UploadSection />
-
       <Footer />
     </Box>
   );

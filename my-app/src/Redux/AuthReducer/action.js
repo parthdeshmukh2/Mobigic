@@ -2,6 +2,8 @@ import axios from "axios";
 
 import * as types from "./actionTypes";
 
+//Function for User Login
+
 export const userLogin = (body, navigate) => (dispatch) => {
   dispatch({ type: types.GET_LOGIN_REQUEST });
 
@@ -18,6 +20,7 @@ export const userLogin = (body, navigate) => (dispatch) => {
     });
 };
 
+//Function For User Registration.
 export const registerUser = (body, navigate) => (dispatch) => {
   console.log(body);
   dispatch({ type: types.GET_REGISTER_REQUEST });
